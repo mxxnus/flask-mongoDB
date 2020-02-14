@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 
-class User(Document):
+class User(db.Document):
     name = me.StringField(max_length=60, required=True)
     email = me.StringField(max_length=60, required=True, unique=True)
     password = me.StringField(max_length=180, required=True)

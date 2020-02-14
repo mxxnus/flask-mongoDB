@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_mongoengine import MongoEngine
 
@@ -13,9 +14,13 @@ db = MongoEngine()
 def create_app(config_class=Config):
     app = Flask(__name__)
 
-    app.config['MONGODB_SETTINGS'] = {
-        "db": "bills",
-    }
+    app.config.from_object(config_class)
+
+    #app.config['MONGODB_SETTINGS'] = {
+        #"db": "bills"
+    #}
+
+
     db.init_app(app)
 
     login.init_app(app)
