@@ -28,3 +28,14 @@ def reminders():
         'bills': Bill.objects(user=str(current_user.id)).all()   
     }
     return render_template('reminders.html', **context)
+
+
+@bill.route('/delete/<id>')
+@login_required
+def delete_post(id):
+
+    p = Bill.objects.with_id(id)
+    p.delete()
+
+    flash("Post deleted successfully","info")
+    return redirect(url_for('bill.reminders'))

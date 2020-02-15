@@ -9,10 +9,15 @@
   {% if bills %}
 
   {% for b in bills%}
-  <small>{{ b.description}}</small>
+  <small>{{ b.description}}
+    <span><a class="float-right btn btn-danger" href="/bill/delete/{{b.id}}">Delete</a><a class="float-right btn btn-warning" href="">Edit</a></span>
+  </small>
     <p>
+    
       ${{ b.amount/100 }} | {{ b.pay_to }} | {{ b.due_date}}
+      
     </p>
+    
     
     <hr/>
   {% endfor %}
