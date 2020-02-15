@@ -19,3 +19,12 @@ def create():
         'form':form
     }
     return render_template('create.html', **context)
+
+
+@bill.route('/reminders', methods=['GET','POST'])
+@login_required
+def reminders():
+    context = {
+        'bills': Bill.objects(user=str(current_user.id)).all()   
+    }
+    return render_template('reminders.html', **context)

@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<div>
+    <h3>Reminders</h3>
+  </div>
+  <hr>
+  
+  {% if bills %}
+
+  {% for b in bills%}
+  <small>{{ b.description}}</small>
+    <p>
+      ${{ b.amount/100 }} | {{ b.pay_to }} | {{ b.due_date}}
+    </p>
+    
+    <hr/>
+  {% endfor %}
+
+  {% endif %}
+{% endblock %}
