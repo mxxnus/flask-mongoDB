@@ -37,5 +37,29 @@ def delete_post(id):
     p = Bill.objects.with_id(id)
     p.delete()
 
-    flash("Post deleted successfully","info")
+    flash("Bill deleted successfully","info")
     return redirect(url_for('bill.reminders'))
+
+
+@bill.route('/edit/<id>')
+@login_required
+def edit_post(id):
+
+    #deletes old bill
+    p = Bill.objects.with_id(id)
+    p.delete()
+
+    form = BillForm()
+    if form.validate_on_submit():
+        #creates new one
+        b = Bill(pay_to=form.pay_to.data, description=form.description.data, amount=form.amount.data*100, user=str(current_user.id), due_date=form.due_date.data)
+        b.save()
+
+        flash("Bill edited successfully","info")
+        return redirect(url_for('bill.reminders'))
+
+
+    context = {
+        'form':form
+    }
+    return render_template('edit.html', **context)

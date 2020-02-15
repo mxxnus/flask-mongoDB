@@ -10,7 +10,7 @@
 
   {% for b in bills%}
   <small>{{ b.description}}
-    <span><a class="float-right btn btn-danger" href="/bill/delete/{{b.id}}">Delete</a><a class="float-right btn btn-warning" href="">Edit</a></span>
+    <span><a class="float-right btn btn-danger" href="/bill/delete/{{b.id}}">Delete</a><a class="float-right btn btn-warning" href="/bill/edit/{{b.id}}">Edit</a></span>
   </small>
     <p>
     
@@ -21,6 +21,9 @@
     
     <hr/>
   {% endfor %}
-
+  {% else %}
+    <p>You have no bills... Make some!</p>
   {% endif %}
+
+ 
 {% endblock %}
