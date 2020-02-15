@@ -17,6 +17,7 @@ def register():
         u.save()
         flash("You have registered successfully","success")
         return redirect(url_for('account.login'))
+    
     context = {
         'form':form
     }

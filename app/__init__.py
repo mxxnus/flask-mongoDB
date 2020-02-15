@@ -32,6 +32,8 @@ def create_app(config_class=Config):
     from app.blueprints.account import account
     app.register_blueprint(account, url_prefix='/account')
 
+    from app.blueprints.bill import bill
+    app.register_blueprint(bill, url_prefix='/bill')
 
     with app.app_context():
         from app import models
