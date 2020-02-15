@@ -30,7 +30,7 @@ class Bill(me.Document):
     pay_to = me.StringField(max_length=60, required=True)
     description = me.StringField(max_length=60)
     amount = me.IntField(max_length=60, required=True)
-    user_id = me.SequenceField(max_length=60, required=True)
+    user = me.StringField(max_length=60, required=True)
     due_date = me.DateTimeField(required=True)
     created_on = me.DateTimeField(default=datetime.utcnow)
 

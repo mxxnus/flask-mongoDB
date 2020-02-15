@@ -11,7 +11,7 @@ from app.blueprints.bill import bill
 def create():
     form = BillForm()
     if form.validate_on_submit():
-        b = Bill(pay_to=form.pay_to.data, description=form.description.data, amount=form.amount.data*100, user_id=current_user.id, due_date=form.due_date.data)
+        b = Bill(pay_to=form.pay_to.data, description=form.description.data, amount=form.amount.data*100, user=str(current_user.id), due_date=form.due_date.data)
         b.save()
         flash("Bill Reminder Created","success")
         return redirect(url_for('main.index'))
