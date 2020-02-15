@@ -12,20 +12,11 @@ def register():
     #form class from forms.py 
     form = RegistrationForm()
     if form.validate_on_submit():
-        #u is the object 
         u = User(name=form.name.data, email=form.email.data)
-
-        #calling gen_pass function in models.py in user Class
         u.generate_password(form.password.data)
-
-        
-        
         u.save()
-
         flash("You have registered successfully","success")
         return redirect(url_for('account.login'))
-
-    
     context = {
         'form':form
     }
@@ -38,8 +29,11 @@ def login():
         'form':form
     }
     if form.validate_on_submit():
-        #returns a generator
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.objects(email=form.email.data).first()
+        #user_ = db.user.find({"email":form.email.data})
+        #print(user_)
+        print(user)
+        #user = User.query.filter_by(email=form.email.data).first()
 
         if user is None or not user.check_password(form.password.data):
             flash("Invalid Credentials. Please try again","danger")
