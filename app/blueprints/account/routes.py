@@ -1,7 +1,7 @@
 from app import db
 from flask import render_template, redirect, url_for, flash, request
 from app.models import User
-from app.blueprints.account.forms import  RegistrationForm,LoginForm
+from app.blueprints.account.forms import RegistrationForm,LoginForm
 from flask_login import login_user, logout_user, login_required, current_user, login_required
 
 from app.blueprints.account import account
@@ -44,3 +44,10 @@ def login():
         return redirect(url_for('main.index'))
 
     return render_template('login.html', **context)
+
+@account.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash("You have successfully loggedd out","success")
+    return redirect(url_for('account.login'))
