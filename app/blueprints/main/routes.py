@@ -3,7 +3,7 @@ from app import db
 from app.models import User, Bill
 from flask_login import login_required, current_user
 from app.blueprints.main import main
-
+import datetime
 from bson.objectid import ObjectId
 
 
@@ -11,6 +11,7 @@ from bson.objectid import ObjectId
 @login_required
 def index():
     context = {
-        'bills': Bill.objects().order_by('due_date').all()
+        'bills': Bill.objects().order_by('due_date').all(),
+        'month': datetime.datetime(2020, 3, 1,00,00,00)
     }
     return render_template('index.html', **context)

@@ -7,12 +7,17 @@
   <hr>
   
   {% if bills %}
-
   {% for b in bills%}
+
+  {% if b.due_date < month %}
+
   <small>{{ b.description}}</small>
     <p>
-      ${{ b.amount/100 }} | {{ b.pay_to }} | {{ b.due_date}}
+      ${{ b.amount/100 }} | {{ b.pay_to }} | {{ b.due_date.strftime('%m-%d-%Y')}}
     </p>
+    <small>UserId: {{ b.user}}</small> 
+    
+    {% endif %}
     
     <hr/>
   {% endfor %}
