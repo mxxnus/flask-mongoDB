@@ -1,0 +1,9 @@
+venv/
+.Python
+lib/
+lib64/
+.env
+*.vscode
+__pycache__
+migrations
+.gitignore"sendgrid.env" 

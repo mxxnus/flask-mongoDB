@@ -12,6 +12,7 @@ from bson.objectid import ObjectId
 def index():
     context = {
         'bills': Bill.objects().order_by('due_date').all(),
-        'month': datetime.datetime(2020, 3, 1,00,00,00)
+        'lmonth': datetime.datetime(2020, 3, 1,00,00,00),
+        'fmonth': datetime.datetime(2020, 2, 1,00,00,00)
     }
     return render_template('index.html', **context)

@@ -9,7 +9,7 @@
   {% if bills %}
   {% for b in bills%}
 
-  {% if b.due_date < month %}
+  {% if b.due_date < lmonth and b.due_date > fmonth%}
 
   <small>{{ b.description}}</small>
     <p>
