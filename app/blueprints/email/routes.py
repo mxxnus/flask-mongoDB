@@ -15,7 +15,7 @@ def contact():
 
     if form.validate_on_submit():
         send_email()
-        flash("Bill Reminder emaild","success")
+        flash("Email sent successfully","success")
         #return redirect(url_for('email.contact'))
     context = {
         'form':form
